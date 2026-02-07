@@ -631,6 +631,37 @@ openclaw browser --browser-profile openclaw start
 
 ---
 
+### ⚡ 기본 프로필 설정 (중요!)
+
+Slack이나 대시보드에서 AI에게 브라우저 작업을 요청하려면 **기본 프로필을 설정**해야 합니다.
+
+> ⚠️ 기본값이 `chrome` (확장 프로그램)이라서, 확장 프로그램에 탭을 연결하지 않으면 AI가 브라우저를 사용할 수 없습니다.
+
+**관리형 브라우저를 기본으로 설정 (추천):**
+
+```bash
+# 기본 프로필을 openclaw(관리형)으로 변경
+openclaw config set browser.defaultProfile openclaw
+
+# 브라우저 기능 활성화
+openclaw config set browser.enabled true
+
+# Gateway 재시작 (설정 적용)
+openclaw gateway restart
+```
+
+**그 후 브라우저 시작:**
+
+```bash
+openclaw browser start
+```
+
+이제 Slack에서 "네이버에서 OOO 검색해줘"라고 하면 바로 작동합니다! 🎉
+
+> 💡 **팁**: 확장 프로그램을 기본으로 쓰고 싶다면 `browser.defaultProfile`을 `chrome`으로 설정하고, 사용 전에 Chrome에서 탭을 attach하세요.
+
+---
+
 ### 🎮 AI에게 브라우저 조작 시키기
 
 설정이 완료되면 AI에게 브라우저 작업을 시킬 수 있습니다!
