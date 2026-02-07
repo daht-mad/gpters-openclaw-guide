@@ -552,6 +552,32 @@ openclaw pairing approve slack FP845SQ8
 Approved pairing request for slack
 ```
 
+**9. 스레드 응답 설정 (선택):**
+
+기본적으로 OpenClaw는 Slack DM에서 **스레드로 응답**합니다. 이를 변경하려면:
+
+| 값 | 동작 |
+|---|---|
+| `off` | 스레드 안 씀, 채널/DM 루트에 바로 응답 |
+| `first` | 첫 응답만 스레드로, 이후는 루트 |
+| `all` | 항상 스레드로 응답 (기본값) |
+
+```bash
+# DM에서 스레드 끄기
+openclaw config set channels.slack.replyToModeByChatType.direct off
+
+# 모든 채팅에서 스레드 끄기
+openclaw config set channels.slack.replyToMode off
+
+# 채팅 타입별로 다르게 설정
+openclaw config set channels.slack.replyToModeByChatType.direct off    # DM: 스레드 안 씀
+openclaw config set channels.slack.replyToModeByChatType.group first   # 그룹: 첫 응답만 스레드
+openclaw config set channels.slack.replyToModeByChatType.channel all   # 채널: 항상 스레드
+
+# 설정 후 게이트웨이 재시작
+openclaw gateway restart
+```
+
 ---
 
 ## 10. 브라우저 자동화 설정
